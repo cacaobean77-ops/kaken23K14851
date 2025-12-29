@@ -1,0 +1,54 @@
+
+> webapp@1.0.0 lint
+> eslint .
+
+(node:71316) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/tajimayuu/blockchain_project2AG/webapp/eslint.config.js?mtime=1766892432740 is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/tajimayuu/blockchain_project2AG/webapp/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+/Users/tajimayuu/blockchain_project2AG/webapp/src/components/AliasManager.tsx
+   44:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   93:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  110:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/tajimayuu/blockchain_project2AG/webapp/src/components/AuditLogViewer.tsx
+   1:27  warning  'useEffect' is defined but never used     @typescript-eslint/no-unused-vars
+  48:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/tajimayuu/blockchain_project2AG/webapp/src/components/OrthancBrowser.tsx
+  29:17  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  40:5   error    Definition for rule 'react-hooks/exhaustive-deps' was not found  react-hooks/exhaustive-deps
+
+/Users/tajimayuu/blockchain_project2AG/webapp/src/components/PatientApprovals.tsx
+  11:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  23:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/tajimayuu/blockchain_project2AG/webapp/src/components/ProviderSettings.tsx
+  108:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  128:17  error    Empty block statement                     no-empty
+  131:17  error    Empty block statement                     no-empty
+  192:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/tajimayuu/blockchain_project2AG/webapp/src/components/RequesterDashboard.tsx
+   87:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  195:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  223:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  407:23  error    Empty block statement                     no-empty
+  410:23  error    Empty block statement                     no-empty
+  434:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  524:17  error    Empty block statement                     no-empty
+  538:19  error    Empty block statement                     no-empty
+  546:17  error    Empty block statement                     no-empty
+  552:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/tajimayuu/blockchain_project2AG/webapp/src/hooks/usePatientAccess.ts
+  29:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  43:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/tajimayuu/blockchain_project2AG/webapp/src/lib/orthanc.ts
+  64:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  72:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 27 problems (8 errors, 19 warnings)
+

@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage
+.nyc_output
+
+# Build outputs
+dist/
+build/
+artifacts/
+cache/
+typechain-types/
+
+# Local env & Secrets (High Priority)
+.env
+.env.*
+!.env.example
+*.env
+worker/config.json
+worker/alias-map.json
+worker/gateway-audit.jsonl
+*.key
+*.pem
+worker/certs/
+
+# IDEs
+.idea
+.vscode
+.DS_Store
+*.swp
+
+# Docker / Data
+data/
+logs/
+.run/
+orthanc/*.json
+!orthanc/requester.json
+# ^ requester.json is kept if it's default/safe
+keycloak/data/
+
+# Hardhat
+hardhat.config.ts.timestamp

@@ -1,0 +1,64 @@
+{
+  "realm": "patient-access",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "worker-api",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "worker-api-secret",
+      "redirectUris": ["*"]
+    },
+    {
+      "clientId": "webapp",
+      "protocol": "openid-connect",
+      "publicClient": true,
+      "redirectUris": ["http://localhost:5173/*"],
+      "webOrigins": ["*"]
+    },
+    {
+      "clientId": "provider-agent",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "provider-agent-secret",
+      "redirectUris": ["*"]
+    }
+  ],
+  "roles": {
+    "realm": [
+      { "name": "worker.admin" },
+      { "name": "worker.read" },
+      { "name": "requester.viewer" },
+      { "name": "provider.push" }
+    ]
+  },
+  "users": [
+    {
+      "username": "worker-admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        { "type": "password", "value": "admin", "temporary": false }
+      ],
+      "realmRoles": ["worker.admin", "worker.read"]
+    },
+    {
+      "username": "requester-viewer",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        { "type": "password", "value": "viewer", "temporary": false }
+      ],
+      "realmRoles": ["requester.viewer"]
+    },
+    {
+      "username": "provider-agent",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        { "type": "password", "value": "provider", "temporary": false }
+      ],
+      "realmRoles": ["provider.push"]
+    }
+  ]
+}

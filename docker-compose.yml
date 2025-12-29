@@ -1,0 +1,71 @@
+services:
+  orthanc_provider:
+    image: orthancteam/orthanc:latest
+    container_name: orthanc_provider
+    ports:
+      - "8042:8042"   # HTTP
+      - "4242:4242"   # C-STORE
+    environment:
+      ORTHANC__Name: Provider
+      ORTHANC__AuthenticationEnabled: "true"
+      ORTHANC__RegisteredUsers__orthanc: orthanc
+      # DICOMweb プラグイン有効化＋エンドポイント設定
+      DICOM_WEB_PLUGIN_ENABLED: "true"
+      ORTHANC__DICOM_WEB__ENABLE: "true"
+      ORTHANC__DICOM_WEB__ROOT: /dicom-web
+      # CORS（必要なら）
+      ORTHANC__HttpHeaders__Access-Control-Allow-Origin: "*"
+      ORTHANC__HttpHeaders__Access-Control-Allow-Methods: "GET,POST,PUT,DELETE,OPTIONS"
+      ORTHANC__HttpHeaders__Access-Control-Allow-Headers: "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    volumes:
+      - ./data/provider:/var/lib/orthanc/db
+
+  orthanc_requester:
+    image: orthancteam/orthanc:latest
+    container_name: orthanc_requester
+    ports:
+      - "8043:8042"
+    volumes:
+      - ./orthanc/requester.json:/etc/orthanc/orthanc.json:ro
+      - ./data/requester:/var/lib/orthanc/db
+      - ./ohif/app-config.js:/usr/share/orthanc/dicom-web/app-config.js:ro
+      - ./ohif/app-config.js:/usr/local/share/orthanc/plugins/dicom-web/app-config.js:ro
+
+  ohif:
+    image: ohif/viewer:latest
+    platform: linux/amd64
+    container_name: ohif_viewer
+    ports:
+      - "3000:80"
+    volumes:
+      - ./ohif/app-config.js:/usr/share/nginx/html/app-config.js:ro
+      - ./ohif/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./ohif/index.html:/usr/share/nginx/html/index.html:ro
+      - ./ohif/polyfill.min.js:/usr/share/nginx/html/polyfill.min.js:ro
+
+  nginx:
+    image: nginx:latest
+    container_name: gateway_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - ohif
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    container_name: keycloak
+    command: start-dev --import-realm
+    environment:
+      KC_DB: dev-file
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./keycloak/realm-export.json:/opt/keycloak/data/import/realm.json:ro
+
+

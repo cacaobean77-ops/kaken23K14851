@@ -1,0 +1,69 @@
+
+> lint
+> eslint .
+
+
+/Users/tajimayuu/blockchain_project2AG/worker/alert-service.ts
+  15:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  42:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  60:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/tajimayuu/blockchain_project2AG/worker/auth.ts
+   38:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   57:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   60:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   94:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  135:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  136:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  228:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/tajimayuu/blockchain_project2AG/worker/dicom.ts
+  6:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/tajimayuu/blockchain_project2AG/worker/index.ts
+    11:3   warning  'ProviderPushInstance' is defined but never used  @typescript-eslint/no-unused-vars
+    16:27  warning  'Principal' is defined but never used             @typescript-eslint/no-unused-vars
+   110:10  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   130:23  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   133:24  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   136:23  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   140:30  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   185:18  warning  '_' is defined but never used                     @typescript-eslint/no-unused-vars
+   190:20  warning  '_' is defined but never used                     @typescript-eslint/no-unused-vars
+   195:17  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   218:17  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   266:17  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   459:60  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   468:15  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   686:24  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   849:29  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   873:41  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   892:33  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   892:84  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   908:17  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+   991:57  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1011:16  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1017:33  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1049:61  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1172:17  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1186:18  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1189:17  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1242:37  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1268:23  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1329:87  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1404:43  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1459:29  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  1464:21  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+
+/Users/tajimayuu/blockchain_project2AG/worker/provider-push-agent.ts
+  195:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  201:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  219:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  268:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  299:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/tajimayuu/blockchain_project2AG/worker/signer-client.ts
+  2:28  warning  'JsonRpcProvider' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 50 problems (0 errors, 50 warnings)
+

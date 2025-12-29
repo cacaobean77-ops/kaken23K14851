@@ -1,0 +1,90 @@
+{
+    "rpcUrl": "http://127.0.0.1:8545",
+    "chainId": 31337,
+    "contractAddress": "0xYOUR_CONTRACT_ADDRESS",
+    "clinics": {
+        "PROV-001": {
+            "role": "provider",
+            "operatorAddress": "0xPROVIDER_ADDRESS",
+            "priceToken": "0xTOKEN_ADDRESS"
+        },
+        "REQ-001": {
+            "role": "requester"
+        }
+    },
+    "providers": {
+        "PROV-001": {
+            "qido": {
+                "baseUrl": "http://localhost:8042",
+                "auth": {
+                    "type": "basic",
+                    "username": "orthanc",
+                    "password": "orthanc"
+                }
+            },
+            "wado": {
+                "baseUrl": "http://localhost:8042",
+                "auth": {
+                    "username": "orthanc",
+                    "password": "orthanc"
+                }
+            },
+            "rest": {
+                "baseUrl": "http://localhost:8042",
+                "auth": {
+                    "username": "orthanc",
+                    "password": "orthanc"
+                }
+            }
+        }
+    },
+    "requester": {
+        "orthanc": {
+            "baseUrl": "http://localhost:8043",
+            "auth": {
+                "type": "basic",
+                "username": "orthanc",
+                "password": "orthanc"
+            }
+        }
+    },
+    "copy": {
+        "mode": "orthanc",
+        "batchSize": 32,
+        "maxRetries": 3,
+        "backoffMs": 1000,
+        "fulfillmentPollMs": 1500,
+        "fulfillmentMaxAttempts": 20
+    },
+    "api": {
+        "host": "0.0.0.0",
+        "port": 8787,
+        "corsOrigin": "http://localhost:5173",
+        "ssl": {
+            "cert": "./certs/server.crt",
+            "key": "./certs/server.key"
+        }
+    },
+    "audit": {
+        "file": "./gateway-audit.jsonl",
+        "retentionDays": 30,
+        "encryptionKey": "YOUR_32_BYTE_HEX_KEY_HERE"
+    },
+    "auth": {
+        "enabled": false
+    },
+    "signers": {
+        "PROV-001": {
+            "type": "privateKey",
+            "privateKey": "0xYOUR_PROVIDER_PRIVATE_KEY"
+        }
+    },
+    "alerts": {
+        "slack": {
+            "webhookUrl": ""
+        },
+        "pagerduty": {
+            "routingKey": ""
+        }
+    }
+}

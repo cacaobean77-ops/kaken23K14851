@@ -1,0 +1,29 @@
+{
+  "name": "patient-access-contracts",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:localhost": "hardhat run scripts/deploy.ts --network localhost",
+    "export-abi": "node scripts/export-abi.js && node scripts/sync-addresses.js",
+    "sync-addresses": "node scripts/sync-addresses.js",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.39.2",
+    "globals": "^16.5.0",
+    "hardhat": "^2.22.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "ethers": "^6.14.0"
+  },
+  "overrides": {
+    "ethers": "^6.14.0"
+  }
+}

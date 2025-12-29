@@ -1,0 +1,160 @@
+{
+  "rpcUrl": "http://127.0.0.1:8545",
+  "chainId": 31337,
+  "contractAddress": "0xYourPatientAccessAddress",
+  "clinics": {
+    "PROV-001": {
+      "role": "provider",
+      "operatorAddress": "0xProviderOperatorAddress",
+      "priceToken": "0xMockErc20Address"
+    },
+    "REQ-001": {
+      "role": "requester"
+    }
+  },
+  "providers": {
+    "PROV-001": {
+      "qido": {
+        "baseUrl": "https://provider-orthanc.example.com",
+        "issuer": "PROV-001",
+        "auth": {
+          "type": "basic",
+          "username": "orthanc",
+          "password": "orthanc"
+        }
+      },
+      "wado": {
+        "baseUrl": "https://provider-orthanc.example.com",
+        "auth": {
+          "type": "basic",
+          "username": "orthanc",
+          "password": "orthanc"
+        }
+      },
+      "rest": {
+        "baseUrl": "https://provider-orthanc.example.com",
+        "auth": {
+          "type": "basic",
+          "username": "orthanc",
+          "password": "orthanc"
+        }
+      }
+    }
+  },
+  "requester": {
+    "orthanc": {
+      "baseUrl": "https://requester-orthanc.example.com",
+      "auth": {
+        "type": "basic",
+        "username": "orthanc",
+        "password": "orthanc"
+      }
+    }
+  },
+  "aliasResolver": {
+    "type": "map",
+    "map": {
+      "0xPatientWallet": "PatientID-Example"
+    }
+  },
+  "copy": {
+    "mode": "providerPush",
+    "batchSize": 32,
+    "maxRetries": 3,
+    "backoffMs": 1000,
+    "fulfillmentPollMs": 1500,
+    "fulfillmentMaxAttempts": 20
+  },
+  "api": {
+    "host": "0.0.0.0",
+    "port": 8787,
+    "corsOrigin": "https://requester-app.example.com,https://ohif.example.com",
+    "ssl": {
+      "cert": "./certs/server.crt",
+      "key": "./certs/server.key"
+    }
+  },
+  "audit": {
+    "file": "./gateway-audit.jsonl",
+    "retentionDays": 30,
+    "encryptionKey": "optional-32-char-hex-keyifyouwantencryption"
+  },
+  "auth": {
+    "enabled": true,
+    "issuer": "https://keycloak.example.com/realms/patient-access",
+    "audience": "worker-api",
+    "roleClaim": "realm_access.roles",
+    "jwks": {
+      "keys": [
+        {
+          "kid": "worker-dev",
+          "kty": "RSA",
+          "alg": "RS256",
+          "use": "sig",
+          "n": "<base64url-encoded-modulus>",
+          "e": "AQAB"
+        }
+      ]
+    },
+    "routes": [
+      {
+        "path": "/aliases",
+        "methods": [
+          "GET",
+          "PUT",
+          "DELETE"
+        ],
+        "requiredRoles": [
+          "worker.admin"
+        ]
+      },
+      {
+        "path": "/copy-events",
+        "methods": [
+          "GET"
+        ],
+        "requiredRoles": [
+          "worker.read"
+        ]
+      },
+      {
+        "path": "/dicom-web-config",
+        "methods": [
+          "GET"
+        ],
+        "requiredRoles": [
+          "requester.viewer"
+        ]
+      },
+      {
+        "path": "/secure",
+        "methods": [
+          "GET"
+        ],
+        "requiredRoles": [
+          "requester.viewer"
+        ]
+      },
+      {
+        "path": "/provider-push",
+        "methods": [
+          "POST"
+        ],
+        "requiredRoles": [
+          "provider.push"
+        ]
+      }
+    ]
+  },
+  "signers": {
+    "PROV-001": {
+      "type": "http",
+      "endpoint": "https://provider-signer.example.com/api/mark-fulfilled",
+      "auth": {
+        "type": "bearer",
+        "token": "<service-to-service-token>"
+      },
+      "timeoutMs": 45000
+    }
+  }
+}
